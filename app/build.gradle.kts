@@ -37,6 +37,10 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
+    buildFeatures{
+        viewBinding = true
+    }
 }
 
 dependencies {
@@ -56,6 +60,6 @@ dependencies {
     implementation("com.google.firebase:firebase-analytics-ktx")
     implementation("com.google.firebase:firebase-storage-ktx")
     implementation("com.google.firebase:firebase-firestore-ktx")
-    implementation(" \tcom.google.firebase:firebase-auth-ktx")
+    implementation("com.google.firebase:firebase-auth-ktx")
 
 }
