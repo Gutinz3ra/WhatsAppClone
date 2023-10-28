@@ -6,5 +6,6 @@
 <!--colors att-->
     <color name="primaria">#0F8068</color>
     <color name="destaque">#16A984</color>
+    <color name="cinza">#C1C1C1</color>
 
 </resources>

@@ -4,11 +4,13 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.whatsappclone.databinding.ActivityCadastroBinding
+import com.example.whatsappclone.model.Usuario
 import com.example.whatsappclone.utils.exibirmensagem
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.FirebaseAuthUserCollisionException
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException
+import com.google.firebase.firestore.FirebaseFirestore
 
 class CadastroActivity : AppCompatActivity() {
 
@@ -19,9 +21,15 @@ class CadastroActivity : AppCompatActivity() {
     private lateinit var nome: String
     private lateinit var email: String
     private lateinit var senha: String
+
+    //Firebase Auth
     private val firebaseAuth by lazy {
         FirebaseAuth.getInstance()
     }
+    private val firestore by lazy {
+        FirebaseFirestore.getInstance()
+    }
+
 
 
 
@@ -50,11 +58,15 @@ class CadastroActivity : AppCompatActivity() {
 
             if (resultado.isSuccessful){
 
-                exibirmensagem("Sucesso ao fazer o seu cadastro")
+                //SAVED DATA FIRESTORE
 
-                startActivity(
-                    Intent(applicationContext, MainActivity::class.java)
-                )
+                val idUsuario = resultado.result.user?.uid
+                if (idUsuario != null){
+                    val usuario = Usuario(
+                        idUsuario, nome, email
+                    )
+                    salvarUsuarioFirestore(usuario)
+                }
             }
 
         }.addOnFailureListener { erro ->
@@ -66,16 +78,33 @@ class CadastroActivity : AppCompatActivity() {
                 exibirmensagem("Senha fraca!")
 
             } catch (erroUsuarioExistente: FirebaseAuthUserCollisionException) {
-                exibirmensagem("Este Email já existe!")
                 erroUsuarioExistente.printStackTrace()
+                exibirmensagem("Este Email já existe!")
 
             } catch (erroCredenciaisInvalidas: FirebaseAuthInvalidCredentialsException) {
-                exibirmensagem("Email Inválido, digite um outro Email!")
                 erroCredenciaisInvalidas.printStackTrace()
-
-
+                exibirmensagem("Email Inválido, digite um outro Email!")
             }
         }
+    }
+
+    private fun salvarUsuarioFirestore(usuario: Usuario) {
+
+        firestore
+            .collection("usuarios")
+            .document(usuario.id)
+            .set(usuario)
+            .addOnSuccessListener {
+                exibirmensagem("Sucesso ao fazer o seu cadastro")
+                startActivity(
+                    Intent(applicationContext, MainActivity::class.java)
+                )
+            }.addOnFailureListener {
+                exibirmensagem("Erro ao fazer o seu cadastro")
+
+            }
+
+
     }
 
     private fun validarCampos(): Boolean{

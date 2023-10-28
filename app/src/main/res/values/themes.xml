@@ -4,7 +4,13 @@
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
         <item name="colorPrimary">@color/primaria</item>
+        <item name="actionOverflowButtonStyle">
+            @style/ActionOverflowButton
+        </item>
     </style>
-
+        <style name="ActionOverflowButton"
+            parent="Widget.AppCompat.ActionButton.Overflow">
+            <item name="tint">@color/white</item>
+        </style>
     <style name="Theme.WhatsAppClone" parent="Base.Theme.WhatsAppClone" />
 </resources>
