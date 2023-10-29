@@ -12,5 +12,10 @@
             parent="Widget.AppCompat.ActionButton.Overflow">
             <item name="tint">@color/white</item>
         </style>
+    
+        <style name="Circulo">
+            <item name="cornerSize">50%</item>
+        </style>
+        
     <style name="Theme.WhatsAppClone" parent="Base.Theme.WhatsAppClone" />
 </resources>
