@@ -8,6 +8,7 @@ import com.example.whatsappclone.utils.exibirmensagem
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.FirebaseAuthInvalidUserException
+import com.example.whatsappclone.MainActivity
 
 class LoginActivity : AppCompatActivity() {
 
