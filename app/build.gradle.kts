@@ -5,6 +5,9 @@ plugins {
 
     //firebase google plugins
     id("com.google.gms.google-services")
+
+    //parceble
+    id("kotlin-parcelize")
 }
 
 android {
@@ -44,7 +47,7 @@ android {
 }
 
 dependencies {
-
+    implementation ("com.google.android.material:material:1.5.0")
     implementation(libs.core.ktx)
     implementation(libs.appcompat)
     implementation(libs.material)
@@ -52,6 +55,7 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.espresso.core)
+
 
 
     //Firebase Dependencies
