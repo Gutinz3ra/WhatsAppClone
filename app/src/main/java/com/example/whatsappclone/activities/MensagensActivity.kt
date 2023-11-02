@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.whatsappclone.adapters.ConversasAdapter
+import com.example.whatsappclone.adapters.MensagensAdapter
 import com.example.whatsappclone.databinding.ActivityMensagensBinding
 import com.example.whatsappclone.model.Conversa
 import com.example.whatsappclone.model.Mensagem
@@ -33,7 +33,7 @@ class MensagensActivity : AppCompatActivity() {
     private lateinit var listenerRegistration: ListenerRegistration
     private var dadosDestinatario: Usuario? = null
     private var dadosUsuarioRementente: Usuario? = null
-    private lateinit var conversasAdapter: ConversasAdapter
+    private lateinit var conversasAdapter: MensagensAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,7 +48,7 @@ class MensagensActivity : AppCompatActivity() {
     private fun inicializarRecyclerview() {
 
         with(binding){
-            conversasAdapter = ConversasAdapter()
+            conversasAdapter = MensagensAdapter()
             rvMensagens.adapter = conversasAdapter
             rvMensagens.layoutManager = LinearLayoutManager(applicationContext)
         }
@@ -217,26 +217,16 @@ class MensagensActivity : AppCompatActivity() {
         //Recuperando dados destinatário
         val extras = intent.extras
         if( extras != null ){
-
-            val origem = extras.getString("origem")
-            if( origem == Constantes.ORIGEM_CONTATO ){
-
-                dadosDestinatario = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-                    extras.getParcelable(
-                        "dadosDestinatario",
-                        Usuario::class.java
-                    )
-                }else{
-                    extras.getParcelable(
-                        "dadosDestinatario"
-                    )
-                }
-
-            }else if( origem == Constantes.ORIGEM_CONVERSA ){
-                //Recuperar os dados da conversa
-
+            dadosDestinatario = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                extras.getParcelable(
+                    "dadosDestinatario",
+                    Usuario::class.java
+                )
+            }else{
+                extras.getParcelable(
+                    "dadosDestinatario"
+                )
             }
-
         }
 
     }

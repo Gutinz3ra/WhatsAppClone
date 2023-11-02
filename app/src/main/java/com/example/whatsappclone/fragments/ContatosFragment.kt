@@ -22,14 +22,12 @@ class ContatosFragment : Fragment() {
     private lateinit var binding: FragmentContatosBinding
     private lateinit var eventoSnapshot: ListenerRegistration
     private lateinit var contatosAdapter: ContatosAdapter
-
     private val firebaseAuth by lazy {
         FirebaseAuth.getInstance()
     }
     private val firestore by lazy {
         FirebaseFirestore.getInstance()
     }
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,11 +38,11 @@ class ContatosFragment : Fragment() {
             inflater, container, false
         )
 
-        contatosAdapter = ContatosAdapter{usuario ->
+        contatosAdapter = ContatosAdapter { usuario ->
             val intent = Intent(context, MensagensActivity::class.java)
             intent.putExtra("dadosDestinatario", usuario)
-            intent.putExtra("origem" , Constantes.ORIGEM_CONTATO)
-            startActivity(intent)
+            //intent.putExtra("origem", Constantes.ORIGEM_CONTATO)
+            startActivity( intent )
         }
         binding.rvContatos.adapter = contatosAdapter
         binding.rvContatos.layoutManager = LinearLayoutManager(context)
@@ -66,7 +64,7 @@ class ContatosFragment : Fragment() {
     private fun adicionarListenerContatos() {
 
         eventoSnapshot = firestore
-            .collection("usuarios")
+            .collection( Constantes.USUARIOS )
             .addSnapshotListener { querySnapshot, erro ->
 
                 val listaContatos = mutableListOf<Usuario>()
