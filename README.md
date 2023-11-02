@@ -1,73 +1,114 @@
 # WhatsApp Clone Application Documentation
-## !!!!! Work In Progress !!!!!
 
+## Introduction
+
+The **WhatsApp Clone Application** is a mobile app developed for Android devices, replicating the features of the popular WhatsApp messaging app. This document serves as a comprehensive guide for understanding the app's functionality, features, and implementation.
 
 ## Overview
 
- ### The WhatsApp Clone app has the following main features:
+The **WhatsApp Clone Application** offers a wide range of features, including:
 
- - **Login and Authentication:** Users can register and log in with their accounts using Firebase Authentication. Passwords and emails are used for authentication.
+1. **Registration and Authentication:**
+     - Registration of new users.
+     - Authentication using email and password through Firebase Authentication.
 
- - **Tabbed Navigation:** The app uses a ViewPager2 and a TabLayout to allow users to switch between two main tabs: "Conversations" and "Contacts".
+2. **Tab Navigation:**
+     - User interface with "Chats" and "Contacts" tabs.
+     - Utilizes ViewPager2 and TabLayout for seamless tab switching.
 
- - **Conversation List:** In the "Conversations" tab, users can see a list of recent conversations, including contact names and received messages.
+3. **Customized Toolbar:**
+     - A custom toolbar displaying the app's name ("WhatsApp Clone").
 
- - **Contact List:** In the "Contacts" tab, users can see a list of contacts, including names and contact information.
+4. **Profile Editing:**
+     - Users can edit their profiles, including name, profile picture, and status.
 
- - **User Profile:** Users can access their profile and make edits.
+5. **Message Sending:**
+     - Real-time communication between users.
+     - Sending text messages to other contacts.
 
- - **Log Out:** Users can log out of their accounts and return to the login screen.
-     
+6. **Conversation Display:**
+     - Lists recent conversations with contacts, displaying relevant information.
+     - Shows exchanged messages within a conversation.
 
-## Architecture
+7. **Push Notifications:**
+     - Notifies users of newly received messages.
 
-### The WhatsApp Clone app follows a typical Android architecture, with the following main parts:
+8. **Voice Calls (optional):**
+     - Optional implementation of voice calls.
 
-- **Activities:** The app has multiple activities including login activity, main activity, profile activity and chat activity.
+## Architecture and Components
 
-- **Fragments:** Fragments are used to display content in the "Conversations" and "Contacts" tabs of the main activity.
+The **WhatsApp Clone Application** follows a standard Android app architecture, comprising the following core components:
 
-- **Firebase:** Firebase is used for authentication and data storage. Firebase Authentication is used to authenticate users, and Firebase Realtime Database (or Firestore) can be used to store conversation data, contacts, and user information.
+1. **Activities:**
+     - `LoginActivity`: User login and registration screen.
+     - `MainActivity`: Main screen with "Chats" and "Contacts" tabs.
+     - `ProfileActivity`: User profile screen.
+     - `ChatActivity`: Chat screen with a specific contact.
 
-- **ViewPager2 and TabLayout:** ViewPager2 is used to create tab navigation between "Conversations" and "Contacts". TabLayout is used to display tabs at the top of the screen.
+2. **Fragments:**
+     - `ChatsFragment`: Displays the list of recent conversations.
+     - `ContactsFragment`: Displays the list of contacts.
 
-## Workflow
+3. **Firebase Authentication:**
+     - Used for user registration and authentication.
 
-### Here is a typical workflow for WhatsApp Clone app users:
+4. **Firebase Realtime Database (or Firestore):**
+     - Real-time data storage, including conversations and user information.
 
-- Login and Registration:
-     Users can register or log in using their email and password.
-     After successful login, they are directed to the main screen of the application.
+5. **ViewPager2 and TabLayout:**
+     - Utilized for tab-based navigation.
 
-- Main screen:
-     On the main screen, users see "Conversations" and "Contacts" tabs.
-     They can switch between tabs by tapping on them.
-
-- Conversations:
-     In the "Conversations" tab, users can see recent conversations with other contacts.
-     They can tap a conversation to open the conversation screen.
-
-- Contacts:
-     In the "Contacts" tab, users can see a list of contacts.
-     They can tap a contact to start a conversation.
-
-- User Profile:
-     Users can access their profile by tapping a profile icon.
-     They can edit personal information such as name, profile picture, status, etc.
-
-- Log Out of Account:
-     Users can log out of their accounts by tapping "Sign Out" on the profile screen.
+6. **Push Notifications (optional):**
+     - Implementation to notify users of new messages.
 
 ## System Requirements
 
- - Android devices with a supported version of the Android operating system.
- Internet connection for authentication and real-time communication with other users.
+- Android devices with a compatible version of the Android operating system.
+- An internet connection for real-time communication with other users.
+- Necessary permissions for features such as camera, gallery, and location.
 
 ## Libraries and Tools
 
-### The WhatsApp Clone app makes use of the following libraries and tools:
+The **WhatsApp Clone Application** leverages the following libraries and tools:
 
-- **Firebase Authentication:** For user authentication.
-- **Firebase Realtime Database (or Firestore):** For real-time data storage.
-- **ViewPager2:** For tabbed browsing.
-- **TabLayout:** To display tabs in the user interface.
+- **Firebase:** For user authentication and data storage.
+- **ViewPager2 and TabLayout:** For tab-based navigation.
+- **Glide (optional):** For image loading, including user profile pictures.
+- **Push Notifications (optional):** Implementation of push notifications.
+- **Material Design:** For creating an appealing and consistent user interface.
+
+## Workflow
+
+1. **Registration and Login:**
+     - Users are directed to the registration or login screen upon app launch.
+     - They can create a new account or log in with existing credentials.
+
+2. **Main Screen:**
+     - After successful login, users access the app's main screen featuring "Chats" and "Contacts" tabs.
+
+3. **Chats:**
+     - In the "Chats" tab, users can view recent conversations with other contacts.
+     - Tapping on a conversation opens the chat screen.
+
+4. **Contacts:**
+     - In the "Contacts" tab, users can view a list of contacts.
+     - Tapping on a contact initiates a conversation.
+
+5. **User Profile:**
+     - Users can access their profiles by tapping on a profile icon.
+     - They can edit personal information, including name, profile picture, and status.
+
+6. **Sign Out:**
+     - Users can sign out of their accounts by tapping "Sign Out" in the profile screen.
+
+## Final Thoughts
+
+The **WhatsApp Clone Application** is a simplified example of a messaging app. You can further enhance and expand your app by adding more features, such as real-time messaging, voice calls, media attachments, push notifications, and more.
+
+Ensure compliance with Android's Material Design guidelines for a cohesive and enjoyable user experience. Additionally, prioritize security, especially when handling login information and user data.
+
+## Example of use:
+
+https://github.com/Gutinz3ra/WhatsAppClone/assets/91905516/7fc24528-0cd0-481d-8dae-84fa1803203c
+
